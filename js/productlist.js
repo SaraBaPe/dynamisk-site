@@ -3,13 +3,13 @@ const category = params.get("category");
 
 const fetchUrl = category ? `https://kea-alt-del.dk/t7/api/products?category=${encodeURIComponent(category)}` : "https://kea-alt-del.dk/t7/api/products";
 
-const listURL = "https://kea-alt-del.dk/t7/api/products?category=" + category;
+// const listURL = "https://kea-alt-del.dk/t7/api/products?category=" + category;
 const listContainer = document.querySelector("main");
 
 console.log("category:", category);
 
 function getProducts() {
-  fetch(listURL).then((res) => res.json().then((products) => showProducts(products)));
+  fetch(fetchUrl).then((res) => res.json().then((products) => showProducts(products)));
 }
 
 function showProducts(products) {

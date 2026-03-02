@@ -15,7 +15,7 @@ const html = String.raw;
 
 function show(data) {
   productcontainer.innerHTML = html`
-    <article class="product">
+    <article>
       <h3 class="productName">${data.productdisplayname}</h3>
       <img src="https://kea-alt-del.dk/t7/images/webp/640/${id}.webp" alt="Produkt 1" />
     </article>
