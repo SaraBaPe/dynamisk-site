@@ -146,3 +146,11 @@ h1 {
   font-weight: 400;
   font-style: normal;
 }
+
+.productlist_head {
+  text-align: center;
+}
+
+.productlist_head button {
+  padding: 0.5rem;
+}

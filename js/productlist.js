@@ -1,19 +1,19 @@
 const params = new URLSearchParams(window.location.search);
 const category = params.get("category");
+const filterMenBtn = document.querySelector("#filterMenBtn");
 const filterWomenBtn = document.querySelector("#filterWomenBtn");
+const filterUniBtn = document.querySelector("#filterUniBtn");
 const showAllBtn = document.querySelector("#showAllBtn");
 const sortByPriceBtn = document.querySelector("#sortByPriceBtn");
 
 const fetchUrl = category ? `https://kea-alt-del.dk/t7/api/products?category=${encodeURIComponent(category)}` : "https://kea-alt-del.dk/t7/api/products";
 
 // const listURL = "https://kea-alt-del.dk/t7/api/products?category=" + category;
-const listContainer = document.querySelector("main");
+const listContainer = document.querySelector("#container");
 
 console.log("category:", category);
 
 let allProducts = {};
-
-let 
 
 function getProducts() {
   fetch(fetchUrl).then((res) =>
@@ -58,11 +58,15 @@ sortByPriceBtn.addEventListener("click", sortByPriceAsc);
 getProducts();
 
 function filterByGender(targetGender) {
-  const filtered = { ...allProducts }.filter((product) => (product.gender || "").toLowerCase() === targetGender.toLowerCase());
+  const filtered = [...allProducts].filter((product) => (product.gender || "").toLowerCase() === targetGender.toLowerCase());
   showProducts(filtered);
 }
 
+filterMenBtn.addEventListener("click", () => filterByGender("Men"));
+filterUniBtn.addEventListener("click", () => filterByGender("Unisex"));
 filterWomenBtn.addEventListener("click", () => filterByGender("Women"));
 showAllBtn.addEventListener("click", () => showProducts(allProducts));
 
 getProducts();
+
+console.log("alle produkter", allProducts);
